@@ -6,15 +6,22 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-export interface Params {
-  slug: string;
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  return {
+    title: `Redirect for ${params.slug}`,
+    description: 'URL Redirection Page',
+  };
 }
 
-export interface PageProps {
-  params: Params;
-}
-
-export default async function SlugPage({ params }: PageProps) {
+export default async function Page({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const { slug } = params;
 
   const { data, error } = await supabase
@@ -30,15 +37,5 @@ export default async function SlugPage({ params }: PageProps) {
   return <div>URL not found</div>;
 }
 
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Params 
-}): Promise<Metadata> {
-  return {
-    title: `Redirect for ${params.slug}`,
-    description: 'URL Redirection Page'
-  };
-}
-
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
