@@ -6,21 +6,14 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-type Params = {
-  slug: string;
-};
-
-type PageProps = {
-  params: Params & {
-    then?: never;
-    catch?: never;
-    finally?: never;
-    [Symbol.toStringTag]?: never;
+export interface PageProps {
+  params: {
+    slug: string;
   };
-};
+}
 
-export default async function Page({ params }: PageProps) {
-  const { slug } = params;
+export default async function Page(props: PageProps) {
+  const { slug } = props.params;
 
   const { data, error } = await supabase
     .from('urls')
