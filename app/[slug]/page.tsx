@@ -1,17 +1,18 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// app/[slug]/page.tsx
 import { createClient } from '@supabase/supabase-js';
 import { redirect } from 'next/navigation';
+import { Metadata } from 'next';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-export default async function SlugPage({ 
-  params 
-}: { 
-  params: { slug: string } 
-}) {
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
+
+export default async function SlugPage({ params }: PageProps) {
   const { slug } = params;
 
   const { data, error } = await supabase
@@ -25,4 +26,12 @@ export default async function SlugPage({
   }
 
   return <div>URL not found</div>;
+}
+
+// Optional: Generate metadata dynamically if needed
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  return {
+    title: `Redirect for ${params.slug}`,
+    description: 'URL Redirection Page'
+  };
 }
