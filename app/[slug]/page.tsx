@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 // app/[slug]/page.tsx
 import { createClient } from '@supabase/supabase-js';
 import { redirect } from 'next/navigation';
@@ -10,9 +9,9 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 export default async function SlugPage({ 
   params 
 }: { 
-  params: Promise<{ slug: string }>
+  params: { slug: string } // Change from Promise<{ slug: string }> to { slug: string }
 }) {
-  const { slug } = (await params).slug;
+  const { slug } = params; // Simply destructure from params, no need to await
 
   const { data, error } = await supabase
     .from('urls')
@@ -23,6 +22,6 @@ export default async function SlugPage({
   if (data?.original_url) {
     redirect(data.original_url);
   }
-
+  
   return <div>URL not found</div>;
 }
