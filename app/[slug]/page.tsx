@@ -7,10 +7,12 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-export default async function SlugPage(props: { 
-  params: { slug: string } 
+export default async function SlugPage({ 
+  params 
+}: { 
+  params: Promise<{ slug: string }>
 }) {
-  const { slug } = props.params;
+  const { slug } = (await params).slug;
 
   const { data, error } = await supabase
     .from('urls')
