@@ -12,9 +12,8 @@ export interface PageProps {
   };
 }
 
-export default async function Page(props: PageProps) {
-  const { slug } = props.params;
-
+export default async function Page({ params }: { params: { slug: string } }) {
+  const { slug } = params;
   const { data, error } = await supabase
     .from('urls')
     .select('original_url')
@@ -30,7 +29,7 @@ export default async function Page(props: PageProps) {
 
 export async function generateMetadata({ 
   params 
-}: PageProps): Promise<Metadata> {
+}: { params: { slug: string } }): Promise<Metadata> {
   return {
     title: `Redirect for ${params.slug}`,
     description: 'URL Redirection Page'
