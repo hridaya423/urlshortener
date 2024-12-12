@@ -36,10 +36,10 @@ Before installation, ensure you have:
 
 ```bash
 # HTTPS
-git clone https://github.com/yourusername/url-shortener.git
+git clone https://github.com/hridaya423/url-shortener.git
 
 # SSH
-git clone git@github.com:yourusername/url-shortener.git
+git clone git@github.com:hridaya423/url-shortener.git
 
 # Navigate to project directory
 cd url-shortener
