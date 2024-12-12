@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🔗 URL Shortener
 
-## Getting Started
+## Project Overview
 
-First, run the development server:
+A sleek, modern URL shortening service built with Next.js, Supabase, and Tailwind CSS. Quickly transform long, complex URLs into short, shareable links with easy-to-use functionality.
+
+![Project Preview](https://cloud-kj6yptuwl-hack-club-bot.vercel.app/0image.png)
+
+## 🌟 Features
+
+- **Quick URL Shortening**: Convert long URLs to concise, manageable links
+- **Supabase Integration**: Robust database management and link tracking
+- **Modern UI**: Responsive design with Tailwind CSS
+- **Link Management**: 
+  - Create short links
+  - Copy links with one click
+
+## 🛠 Tech Stack
+
+- **Framework**: Next.js
+- **Database**: Supabase
+- **Styling**: Tailwind CSS
+- **Deployment**: Vercel
+
+## 📋 Prerequisites
+
+Before installation, ensure you have:
+- Node.js (v18.0.0 or later)
+- npm (v8.0.0+) or Yarn
+- Supabase account
+- Git
+
+## 🔧 Comprehensive Installation Guide
+
+### 1. Clone the Repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# HTTPS
+git clone https://github.com/yourusername/url-shortener.git
+
+# SSH
+git clone git@github.com:yourusername/url-shortener.git
+
+# Navigate to project directory
+cd url-shortener
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install Dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Using npm
+npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Using Yarn
+yarn install
+```
 
-## Learn More
+### 3. Supabase Setup
 
-To learn more about Next.js, take a look at the following resources:
+#### 3.1 Create Supabase Project
+1. Go to [Supabase](https://supabase.com/)
+2. Create a new project
+3. Navigate to Project Settings > API
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### 3.2 Configure Environment Variables
+Create a `.env.local` file in the project root:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```env
+# Supabase Configuration
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 
-## Deploy on Vercel
+# Application Configuration
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 4. Run Development Server
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+# Using npm
+npm run dev
+
+# Using Yarn
+yarn dev
+```
+
+🌐 Access the application at: `http://localhost:3000`
